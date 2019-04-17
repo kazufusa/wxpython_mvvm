@@ -50,9 +50,15 @@ class Counter(wx.Frame):
         self.hbox.Add(self.text, 1, wx.ALIGN_CENTRE_VERTICAL, 5)
 
         self.Bind(wx.EVT_BUTTON, controllers['increment'], id=self.button.GetId())
-        pub.subscribe(self.update, 'update')
 
-        self.Centre()
+        pub.subscribe(self.update, 'update')
+        self.Bind(wx.EVT_CLOSE, self.onClose)
+
+        self.Center()
+
+    def onClose(self, event):
+        pub.unsubscribe(self.update, 'update')
+        self.Destroy()
 
     def update(self, state):
         self.text.SetLabel(f"{state['count']}")
