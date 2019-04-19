@@ -28,8 +28,8 @@ class TestView(unittest.TestCase):
 
         expected = 'Hello world!'
         pub.sendMessage("update", state={'string': expected})
-        self.assertEqual(self.frame.text.GetValue(), expected)
-        self.assertEqual(self.frame.text_log.GetLabel(), expected)
+        wx.CallAfter(lambda: self.assertEqual(self.frame.text.GetValue(), expected))
+        wx.CallAfter(lambda: self.assertEqual(self.frame.text_log.GetLabel(), expected))
 
     def test_change_string(self):
         self.string = ''

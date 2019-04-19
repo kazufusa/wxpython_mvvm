@@ -61,6 +61,9 @@ class Counter(wx.Frame):
         self.Destroy()
 
     def update(self, state):
+        wx.CallAfter(self.__update_core, state)
+
+    def __update_core(self, state):
         self.text.SetLabel(f"{state['count']}")
         self.hbox.Layout()
 

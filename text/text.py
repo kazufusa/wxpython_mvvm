@@ -61,6 +61,9 @@ class Text(wx.Frame):
         self.Destroy()
 
     def update(self, state):
+        wx.CallAfter(self.__update_core, state)
+
+    def __update_core(self, state):
         new = state['string']
         self.text_log.SetLabel(new)
         current = self.text.GetValue()

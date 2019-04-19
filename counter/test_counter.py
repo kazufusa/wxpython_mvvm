@@ -22,9 +22,9 @@ class TestView(unittest.TestCase):
         self.count += 1
 
     def test_current_count(self):
-        self.assertEqual(self.frame.text.GetLabel(), '0')
+        wx.CallAfter(lambda: self.assertEqual(self.frame.text.GetLabel(), '0'))
         pub.sendMessage("update", state={'count': '2'})
-        self.assertEqual(self.frame.text.GetLabel(), '2')
+        wx.CallAfter(lambda: self.assertEqual(self.frame.text.GetLabel(), '2'))
 
     def test_button_click(self):
         self.count = 0
