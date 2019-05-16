@@ -8,6 +8,8 @@ verify_ssl = true
 [packages]
 wxpython = "*"
 pypubsub = "*"
+numpy = "*"
+matplotlib = "*"
 
 [requires]
 python_version = "3.7"
